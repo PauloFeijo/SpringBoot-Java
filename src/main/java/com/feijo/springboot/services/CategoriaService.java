@@ -1,10 +1,12 @@
 package com.feijo.springboot.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.feijo.springboot.domain.Categoria;
 import com.feijo.springboot.repositories.CategoriaRepository;
+import com.feijo.springboot.services.exceptions.DataIntegrityException;
 import com.feijo.springboot.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -32,5 +34,16 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		find(obj.getId());
 		return repo.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		
+		try {
+			repo.delete(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir uma categoria que tenha produtos");
+		}
 	}	
+	
 }
