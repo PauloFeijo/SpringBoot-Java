@@ -27,7 +27,7 @@ public class PedidoService {
 	private BoletoService boletoService;
 	
 	@Autowired
-	private ProdutoRepository produtoRepository;
+	private ProdutoService produtoService;
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
@@ -63,7 +63,7 @@ public class PedidoService {
 		
 		for (ItemPedido ip : obj.getItens()) {
 			ip.setDesconto(0.0);
-			ip.setPreco(produtoRepository.findOne(ip.getProduto().getId()).getPreco());
+			ip.setPreco(produtoService.find(ip.getProduto().getId()).getPreco());
 			ip.setPedido(obj);			
 		}
 		
