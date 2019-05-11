@@ -8,10 +8,10 @@
 		<version>1.5.19.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.feijo.cursomc</groupId>
-	<artifactId>cursomc</artifactId>
+	<groupId>com.feijo.springboot-java</groupId>
+	<artifactId>springboot-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cursomc</name>
+	<name>springboot-java</name>
 	<description>Estudo de caso Java para o curso de modelagem conceitual com UML</description>
 
 	<properties>
