@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.feijo.springboot.security.JWTAuthenticationFilter;
+import com.feijo.springboot.security.JWTAuthorizationFilter;
 import com.feijo.springboot.security.JWTUtil;
 
 @Configuration
@@ -58,7 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		    .anyRequest()
 		    .authenticated();
 		http.csrf().disable();
-		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));    
+		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService)); 
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		super.configure(http);
