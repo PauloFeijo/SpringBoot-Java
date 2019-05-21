@@ -14,12 +14,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.feijo.springboot.domain.Cidade;
 import com.feijo.springboot.domain.Cliente;
 import com.feijo.springboot.domain.Endereco;
+import com.feijo.springboot.domain.enums.Perfil;
 import com.feijo.springboot.domain.enums.TipoCliente;
 import com.feijo.springboot.dto.ClienteDTO;
 import com.feijo.springboot.dto.ClienteNewDTO;
 import com.feijo.springboot.repositories.CidadeRepository;
 import com.feijo.springboot.repositories.ClienteRepository;
 import com.feijo.springboot.repositories.EnderecoRepository;
+import com.feijo.springboot.security.UserSS;
+import com.feijo.springboot.services.exceptions.AuthorizationException;
 import com.feijo.springboot.services.exceptions.DataIntegrityException;
 import com.feijo.springboot.services.exceptions.ObjectNotFoundException;
 
@@ -40,6 +43,12 @@ public class ClienteService {
 
 	public Cliente find(Integer id) {
 
+		UserSS user = UserService.authenticated();
+		
+		if (user == null || !user.hasHole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		Cliente obj = repo.findOne(id);
 
 		if (obj == null) {
