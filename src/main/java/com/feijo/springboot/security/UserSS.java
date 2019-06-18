@@ -8,10 +8,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.feijo.springboot.domain.Cliente;
 import com.feijo.springboot.domain.enums.Perfil;
 
 public class UserSS implements UserDetails {
+	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
 	private String email;

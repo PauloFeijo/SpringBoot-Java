@@ -10,7 +10,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.feijo.springboot.domain.Categoria;
-import com.feijo.springboot.domain.Cliente;
 import com.feijo.springboot.dto.CategoriaDTO;
 import com.feijo.springboot.repositories.CategoriaRepository;
 import com.feijo.springboot.services.exceptions.DataIntegrityException;

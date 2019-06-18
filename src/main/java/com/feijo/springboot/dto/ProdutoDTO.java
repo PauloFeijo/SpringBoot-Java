@@ -2,9 +2,6 @@ package com.feijo.springboot.dto;
 
 import java.io.Serializable;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.feijo.springboot.domain.Produto;
 
 public class ProdutoDTO implements Serializable {

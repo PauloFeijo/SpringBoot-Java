@@ -60,9 +60,6 @@ public class ClienteResource {
 		
 		obj = service.update(obj);
 
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-				path("/{id}").buildAndExpand(obj.getId()).toUri();
-		
 		return ResponseEntity.noContent().build();
 	}
 	

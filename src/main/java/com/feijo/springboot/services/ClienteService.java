@@ -18,7 +18,6 @@ import com.feijo.springboot.domain.enums.Perfil;
 import com.feijo.springboot.domain.enums.TipoCliente;
 import com.feijo.springboot.dto.ClienteDTO;
 import com.feijo.springboot.dto.ClienteNewDTO;
-import com.feijo.springboot.repositories.CidadeRepository;
 import com.feijo.springboot.repositories.ClienteRepository;
 import com.feijo.springboot.repositories.EnderecoRepository;
 import com.feijo.springboot.security.UserSS;
@@ -35,9 +34,6 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository repo;
 
-	@Autowired
-	private CidadeRepository cidRepo;
-	
 	@Autowired
 	private EnderecoRepository endRepo;	
 
